@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="id" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ryan | Web Developer</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <style>
+    :root { --primary: #FF5722; }
+    body { transition: all 0.4s; }
+    .hero { min-height: 100vh; background: linear-gradient(135deg, #0f0f0f, #1a1a2e); }
+    .card:hover { transform: translateY(-12px); }
+  </style>
+
+<style>
+/* Logo Animation */
+    .navbar {
+      background: rgba(1, 1, 5, 0.016);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 50px rgba(167, 170, 163, 0.996);
+      border-bottom: 2px solid #eb530d41;
+      transition: all 0.4s ease;
+    }
+
+    .navbar :hover {
+      color: #f6fafac1;
+    }
+
+    .navbar-brand {
+      transition: all 0.4s ease;
+    }
+    .navbar-brand:hover {
+      transform: scale(1.2) rotate(5deg);
+      text-shadow: 0 0 30px #31fa0d;
+    }
+    footer-link {
+      transition: all 0.4s ease;
+    }
+    footer-link:hover {
+      color: #a76828;
+      transform: translateY(-5px) scale(1.2);
+      box-shadow: #09e626 0 0 20px;
+    }
+
+    /* Text Hover Animation */
+    h1, h2, .nav-link, p.lead {
+      transition: all 0.4s ease;
+    }
+    h1:hover, h2:hover {
+      transform: translateY(-5px);
+      text-shadow: 0 0 15px rgba(243, 236, 234, 0.6);
+    }
+    .nav-link:hover {
+      color: #09e626 !important;
+      transform: translateX(8px);
+      text-shadow: #f5f8f5 0 0 20px;
+    }
+
+    /* Button Hover Effect */
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+    fade-in :hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 10px 20px rgba(255, 87, 34, 0.5);
+    }
+    .fade-in .btn:hover {
+      background: #ff5722;
+      border-color: #22ff6c;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.4s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.4s;
+    }
+    
+  
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .btn {
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 10px 20px rgba(240, 244, 241, 0.721);
+    }
+    .btn-danger:hover {
+      background: #22ff4e;
+      border-color: #ff5722;
+      border-color: var(--section-text);
+    }
+    .card {
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 30px 40px rgba(14, 29, 231, 0.925);
+    }
+    .toggle-theme:hover {
+      color: #ffeb3b;
+      transform: rotate(15deg) scale(1.2);
+      box-shadow: 0 0 20px #ffeb3b;
+    }
+    .navbar-toggler:hover {
+      color: #ee290680;
+      transform: rotate(30deg) scale(1.0);
+      box-shadow: #00d4ff 0 0 15px;
+    }
+    .footer :hover {
+      color: #9aa728;
+      transform: translateY(-5px) scale(1.1);
+    }
+    footer-logo:hover {
+      background: #3e3d3d;
+      border-color: #491f0a;
+      transform: rotate(20deg) scale(1.0);
+      box-shadow: 0 15px 30px rgba(189, 164, 156, 0.8);
+    }
+    footer-logo:fade-in {
+      opacity: 0;
+      animation: fadeInFooter 6s forwards;
+      box-shadow: #0f0f0f 0 0 30px;
+      transform-origin: center;
+    }
+
+  </style>
+
+<style>
+
+/* ==================== SECTION COLOR CUSTOMIZATION ==================== */
+  /* NAVBAR */
+  .navbar {
+    --section-bg: rgba(16, 19, 16, 0.712);
+    --section-text: #0b20df84;
+    --section-accent: #f0e7e5f0;
+  }
+
+  /* HERO */
+  #hero {
+    --section-bg: linear-gradient(circle at center, #1f0047, #0a081a 75%);
+    --section-text: #ffffff;
+    --section-accent: #ff5722;
+  }
+
+  /* TENTANG SAYA / ABOUT */
+  #tentang {
+    --section-bg: #120d2e;
+    --section-text: #654adf;
+    --section-accent: #9f5bff;
+  }
+  /* SKILLS */
+  #skills {
+    --section-bg: #090600;
+    --section-text: #e1e7ee;
+    --section-accent: #626cf4fd;
+  }
+
+  /* PROJECTS */
+  #projects {
+    --section-bg: #151416;
+    --section-text: #7e2d3c;
+    --section-accent: #00d4ff;
+  }
+
+  /* CONTACT */
+  #contact {
+    --section-bg: #0f192e;
+    --section-text: #d0e6ff;
+    --section-accent: #28a745;
+  }
+
+  /* FOOTER */
+  footer {
+    --section-bg: #1a4226;
+    --section-text: #a2a4bd;
+    --section-accent: #e2e1e7d4;
+  }
+
+  /* Terapkan warna ke masing-masing section */
+  #hero, #tentang, #projects, #contact, footer {
+    background: var(--section-bg);
+    color: var(--section-text);
+  }
+
+  /* Accent color (tombol, link, dll) */
+  .btn-danger, .accent-color { background-color: var(--section-accent) !important; }
+  .text-accent { color: var(--section-accent) !important; }
+</style>
+
+<style>
+/* DOTS */
+  .sparkle {
+    position: absolute; width: 2px; height: 2px; background: #fff;
+    border-radius: 50%; z-index: 2; pointer-events: none;
+    box-shadow: 0 0 8px #fff, 0 0 20px #ffeb3b, 0 0 40px #ff5722;
+    animation: twinkle 1.2s infinite alternate;
+  }
+  @keyframes twinkle { 0% {opacity:0.3; transform:scale(0.5);} 100% {opacity:1; transform:scale(2);} }
+
+  /* METEOR DENGAN TRAILING (EKOR PANJANG) */
+  .meteor {
+    position: absolute;
+    width: 4px; height: 4px;
+    background: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #67e8f9;
+    z-index: 4;
+    animation: meteorFall linear infinite;
+  }
+
+  .meteor::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -80px;
+    width: 80px; height: 2px;
+    background: linear-gradient(90deg, transparent, #67e8f9, #ffffff);
+    transform: rotate(35deg);
+    opacity: 0.6;
+  }
+
+  @keyframes meteorFall {
+    0%   { transform: translateY(-150px) translateX(-150px) rotate(35deg); opacity: 1; }
+    100% { transform: translateY(120vh) translateX(180px) rotate(35deg); opacity: 0; }
+  }
+
+  /* NEBULA */
+  #hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(20, 20, 198, 0.171) 0%, transparent 60%),
+                radial-gradient(circle at 80% 70%, rgba(9, 9, 9, 0.142) 0%, transparent 60%);
+    animation: nebulaDrift 90s linear infinite;
+    z-index: 1;
+    opacity: 0.8;
+  }
+  @keyframes nebulaDrift { 0% {background-position: 0% 0%;} 100% {background-position: 120% 120%;} }
+
+  /* BURST */
+  .burst {
+    position: absolute; width: 8px; height: 8px; background: #ffeb3b;
+    border-radius: 50%; box-shadow: 0 0 25px #ffeb3b; z-index: 5;
+    animation: burstPop 1.1s forwards;
+  }
+  @keyframes burstPop { 0% {transform:scale(0.1); opacity:1;} 100% {transform:scale(6); opacity:0;} }
+</style>
+<body class="bg-dark text-light">
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-collapse bg-success-subtle fixed-top" style="background: var(--section-bg) !important;">
+    <div class="container fade-in">
+      <a class="navbar-brand fw-bold fs-4 d-flex align-items-center" href="#">
+        <img src="https://via.placeholder.com/40" alt="" class="me-2 rounded-circle"> 
+        RyanWeb
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="#about">Tentang</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Kontak</a></li>
+          <li class="nav-item ms-3">
+            <button id="themeToggle" class="btn btn-link text-lg-start fs-4 p-0">
+              <i id="themeIcon" class="bi bi-moon-fill"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<!-- HERO - MAXIMUM DOTS + CAHAYA KUAT -->
+<section id="hero" class="min-vh-100 d-flex align-items-center justify-content-center text-center position-relative overflow-hidden"
+         style="background: radial-gradient(circle at center, #1f0047, #0a081a 75%); padding-top: 80px;">
+
+<!-- Nebula -->
+  <div id="nebula"></div>
+
+  <!-- DOTS SUPER BANYAK -->
+  <div class="sparkle" style="top:8%;left:5%;"></div>
+  <div class="sparkle" style="top:15%;left:18%;"></div>
+  <div class="sparkle" style="top:22%;left:35%;"></div>
+  <div class="sparkle" style="top:12%;left:65%;"></div>
+  <div class="sparkle" style="top:45%;left:8%;"></div>
+  <div class="sparkle" style="top:55%;left:78%;"></div>
+  <div class="sparkle" style="top:68%;left:25%;"></div>
+  <div class="sparkle" style="top:28%;left:82%;"></div>
+  <!-- ... (bisa ditambah lagi kalau mau) -->
+
+  <!-- 70+ DOTS SUPER KECIL -->
+  <div class="sparkle" style="top:5%;left:3%;--x:90px;--y:-150px;animation-delay:0s"></div>
+  <div class="sparkle" style="top:10%;left:12%;--x:-65px;--y:140px;animation-delay:0.1s"></div>
+  <div class="sparkle" style="top:18%;left:22%;--x:100px;--y:-110px;animation-delay:0.3s"></div>
+  <div class="sparkle" style="top:12%;left:38%;--x:-85px;--y:160px;animation-delay:0.6s"></div>
+  <div class="sparkle" style="top:28%;left:8%;--x:75px;--y:-130px;animation-delay:1.2s"></div>
+  <div class="sparkle" style="top:45%;left:65%;--x:-95px;--y:95px;animation-delay:0.4s"></div>
+  <div class="sparkle" style="top:68%;left:18%;--x:120px;--y:-145px;animation-delay:1.8s"></div>
+  <div class="sparkle" style="top:22%;left:75%;--x:-55px;--y:135px;animation-delay:2.3s"></div>
+  <div class="sparkle" style="top:52%;left:32%;--x:85px;--y:-120px;animation-delay:0.9s"></div>
+  <div class="sparkle" style="top:78%;left:48%;--x:-90px;--y:80px;animation-delay:1.5s"></div>
+
+  <!-- Layer 2 -->
+  <div class="sparkle" style="top:8%;left:68%;--x:70px;--y:-140px;animation-delay:2.7s"></div>
+  <div class="sparkle" style="top:38%;left:15%;--x:-80px;--y:150px;animation-delay:3.1s"></div>
+  <div class="sparkle" style="top:60%;left:80%;--x:105px;--y:-95px;animation-delay:1.4s"></div>
+  <div class="sparkle" style="top:25%;left:52%;--x:-70px;--y:165px;animation-delay:3.6s"></div>
+  <div class="sparkle" style="top:70%;left:12%;--x:115px;--y:-85px;animation-delay:4.2s"></div>
+  <div class="sparkle" style="top:15%;left:85%;--x:-50px;--y:120px;animation-delay:2.1s"></div>
+  <div class="sparkle" style="top:48%;left:42%;--x:95px;--y:-135px;animation-delay:3.9s"></div>
+  <div class="sparkle" style="top:65%;left:72%;--x:-85px;--y:100px;animation-delay:2.5s"></div>
+  <div class="sparkle" style="top:30%;left:25%;--x:110px;--y:-160px;animation-delay:4.8s"></div>
+  <div class="sparkle" style="top:82%;left:65%;--x:-75px;--y:90px;animation-delay:1.9s"></div>
+ <!-- Layer 2 -->
+  
+  <!-- Layer 3 (Extra Padat) -->
+  <div class="sparkle" style="top:20%;left:8%;--x:80px;--y:-100px;animation-delay:5.2s"></div>
+  <div class="sparkle" style="top:55%;left:38%;--x:-60px;--y:145px;animation-delay:4.5s"></div>
+  <div class="sparkle" style="top:42%;left:82%;--x:100px;--y:-115px;animation-delay:3.8s"></div>
+  <div class="sparkle" style="top:75%;left:45%;--x:-80px;--y:155px;animation-delay:5.5s"></div>
+  <div class="sparkle" style="top:18%;left:48%;--x:65px;--y:-130px;animation-delay:6.1s"></div>
+  <div class="sparkle" style="top:62%;left:22%;--x:-95px;--y:110px;animation-delay:4.9s"></div>
+  <div class="sparkle" style="top:35%;left:70%;--x:120px;--y:-90px;animation-delay:5.8s"></div>
+  <div class="sparkle" style="top:80%;left:85%;--x:-70px;--y:80px;animation-delay:3.4s"></div>
+
+<!-- Meteor (akan muncul otomatis) -->
+  <div class="meteor" style="top:10%;left:10%;animation-duration:4s"></div>
+  <div class="meteor" style="top:25%;left:5%;animation-duration:6s;animation-delay:1.5s"></div>
+  <div class="meteor" style="top:40%;left:15%;animation-duration:5s;animation-delay:3s"></div>
+  <div class="meteor" style="top:8%;left:70%;animation-duration:7s;animation-delay:2s"></div>
+  <div class="meteor" style="top:55%;left:80%;animation-duration:4.5s;animation-delay:4s"></div>
+
+<!-- Meteor Gila (banyak) -->
+  <div class="meteor" style="top:5%;left:10%;animation-duration:3.5s"></div>
+  <div class="meteor" style="top:18%;left:5%;animation-duration:5s;animation-delay:0.8s"></div>
+  <div class="meteor" style="top:35%;left:20%;animation-duration:4s;animation-delay:2.2s"></div>
+  <div class="meteor" style="top:12%;left:75%;animation-duration:6s;animation-delay:1.5s"></div>
+  <div class="meteor" style="top:50%;left:80%;animation-duration:3.8s;animation-delay:3s"></div>
+  <div class="meteor" style="top:25%;left:45%;animation-duration:4.5s;animation-delay:4.1s"></div>
+
+<!-- Meteor dengan Ekor -->
+  <div class="meteor" style="top:5%;left:8%;animation-duration:3.2s"></div>
+  <div class="meteor" style="top:20%;left:3%;animation-duration:4.8s;animation-delay:0.7s"></div>
+  <div class="meteor" style="top:35%;left:25%;animation-duration:3.8s;animation-delay:1.8s"></div>
+  <div class="meteor" style="top:15%;left:70%;animation-duration:5.5s;animation-delay:2.3s"></div>
+  <div class="meteor" style="top:55%;left:78%;animation-duration:4.1s;animation-delay:3.5s"></div>
+  <div class="meteor" style="top:28%;left:45%;animation-duration:6s;animation-delay:1.2s"></div>
+  <div class="meteor" style="top:65%;left:12%;animation-duration:3.5s;animation-delay:4.2s"></div>
+
+  <div class="container position-relative z-3">
+    <h1 class="display-1 fw-bold mb-3 hero-title">Halo, Saya Ryan!</h1>
+    <p class="lead fs-4 mb-5" style="text-shadow: 0 0 30px rgba(255,255,255,0.8);">
+      Belajar Web Development dari Nol dengan Bootstrap 5
+    </p>
+    
+    <div class="d-flex justify-content-center gap-4 flex-wrap">
+      <a href="#projects" class="btn btn-outline-info btn-lg px-4 py-3">Lihat Project Saya</a>
+      <a href="#contact" class="btn btn-outline-primary btn-lg px-4 py-3">Hubungi Saya</a>
+    </div>
+  </div>
+</section>
+
+  <!-- About -->
+  <section id="about" class="section bg-success-subtle fade-in">
+    <div class="container fade-in">
+      <h2 class="text-center display-5 fw-bold mb-5">Tentang Saya</h2>  
+      <div class="row align-items-center g-5">
+        <div class="col-lg-5 text-center">
+          <img src="foto-profil.jpg" alt="Ryan Profile" class="rounded-circle border border-5 border-primary shadow-lg" style="width: 280px; height: 280px; object-fit: cover;">
+        </div>
+        <div class="col-lg-7">
+          <p class="lead fs-2 mb-2">Assalamualaikum!</p>
+          <p>Saya Ryan, 20 tahun, mahasiswa Teknik Informatika di Universitas Brawijaya.</p>
+          <p>Sedang belajar web development dari nol dengan tujuan bisa freelance dan menghasilkan uang.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="section" style="background: var(--section-bg); color: var(--section-text);">
+    <div class="container fade-in">
+      <h2 class="text-center text-accent [ color: var(--section-accent) ] display-5 fw-bold mb-5">Skills Saat Ini</h2>
+      <div class="row g-4 text-center">
+        <div class="col-md-6 col-lg-3"><div class="card bg-success-subtle h-100 p-4"><i class="bi bi-filetype-html fs-1 text-danger mb-3"></i><h5>HTML</h5><p>Dasar</p></div></div>
+        <div class="col-md-6 col-lg-3"><div class="card bg-success-subtle h-100 p-4"><i class="bi bi-filetype-css fs-1 text-primary mb-3"></i><h5>CSS</h5><p>Dasar + Responsive</p></div></div>
+        <div class="col-md-6 col-lg-3"><div class="card bg-success-subtle h-100 p-4"><i class="bi bi-bootstrap fs-1 text-purple mb-3"></i><h5>Bootstrap 5</h5><p>Sedang dipelajari</p></div></div>
+        <div class="col-md-6 col-lg-3"><div class="card bg-success-subtle h-100 p-4"><i class="bi bi-filetype-js fs-1 text-warning mb-3"></i><h5>JavaScript</h5><p>Dasar</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects (4 Project) -->
+  <section id="projects" class="background: var(--section-bg); color: var(--section-text);">
+    <div class="container fade-in">
+      <h2 class="text-center display-5 fw-bold mb-5">Projects</h2>
+      <div class="raw align-self-center g-sm-5"></div>
+      <div class="row g-4 text-center">
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card bg-dark border-secondary h-100">
+            <div class="card-body d-flex flex-column">
+              <h5>Portfolio Website</h5>
+              <p class="card-text">Website ini sendiri. Dibuat dengan Bootstrap 5 + Dark Mode.</p>
+              <button class="btn btn-primary mt-auto" data-bs-toggle="modal" data-bs-target="#modal1">Lihat Detail</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card bg-dark border-secondary h-100">
+            <div class="card-body d-flex flex-column">
+              <h5>Landing Page Kafe</h5>
+              <p class="card-text">Desain landing page untuk kafe dengan animasi sederhana.</p>
+              <button class="btn btn-primary mt-auto" data-bs-toggle="modal" data-bs-target="#modal2">Lihat Detail</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card bg-dark border-secondary h-100">
+            <div class="card-body d-flex flex-column">
+              <h5>Todo List App</h5>
+              <p class="card-text">Aplikasi todo list sederhana menggunakan JavaScript.</p>
+              <button class="btn btn-primary mt-auto" data-bs-toggle="modal" data-bs-target="#modal3">Lihat Detail</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card bg-dark border-secondary h-100">
+            <div class="card-body d-flex flex-column">
+              <h5>Weather App</h5>
+              <p class="card-text">Menampilkan cuaca menggunakan API (sedang dikembangkan).</p>
+              <button class="btn btn-primary mt-auto" data-bs-toggle="modal" data-bs-target="#modal4">Lihat Detail</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+ <!-- Contact dengan Form -->
+  <section id="contact" class="section bg-opacity-10 py-5">
+    <div class="container fade-in">
+      <h2 class="text-center display-5 fw-bold mb-5">Hubungi Saya</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <form>
+            <div class="mb-3"><input type="text" class="form-control background: var(--section-bg); color: var(--section-text);" placeholder="Nama Lengkap"></div>
+            <div class="mb-3"><input type="email" class="form-control background: var(--section-bg); color: var(--section-text)" placeholder="Email"></div>
+            <div class="mb-3"><textarea class="form-control background: var(--section-bg); color: var(--section-text)" rows="5" placeholder="Pesan / Project yang diinginkan..."></textarea></div>
+            <button type="button" class="btn btn-success btn-lg" style="width: 100%;">Kirim Pesan</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+<!-- Footer -->
+  <footer class="py-5 border-top border-secondary">
+    <div class="container fade-in">
+      <div class="row align-items-center">
+        
+        <div class="col-md-4 text-center text-md-start mb-4 mb-md-0">
+          <h5 class="fw-bold">Ryan<span class="text-danger">.</span></h5>
+          <p class="text-light-emphasis small mb-0">Belajar Web Development dari Nol</p>
+        </div>
+
+        <div class="col-md-4 text-center mb-4 mb-md-0">
+          <p class="text-light small mb-1">© 2026 Ryan Web</p>
+          <p class="text-light small mb-0">Dibuat dengan ❤️ & Bootstrap 5</p>
+        </div>
+
+        <div class="column-gap-md-4 text-center text-md-end">
+          <a href="https://instagram.com/ryans_story26/" class="btn m-md-2" style="background-color: #e03870;"><i class="bi bi-instagram fs-6"></i></a>
+          <a href="https://github.com/ryansstory26/" class="btn m-md-2" style="background-color: #140202;"><i class="bi bi-github fs-6"></i></a>
+          <a href="https://www.tiktok.com/@ryananwar24/" class="btn m-md-2" style="background-color: #a22b4d;"><i class="bi bi-tiktok fs-6"></i></a>
+          <a href="https://wa.me/601124380295" class="btn m-md-2" style="background-color: #0aab45;"><i class="bi bi-whatsapp fs-6"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Contoh -->
+  <div class="modal fade" id="modal1" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header">
+          <h5 class="modal-title">Portfolio Website</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p>Ini adalah website portfolio yang sedang kamu pakai sekarang.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Dark mode toggle
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-bs-theme') === 'dark';
+      document.documentElement.setAttribute('data-bs-theme', isDark ? 'light' : 'dark');
+      document.getElementById('themeIcon').classList.toggle('bi-moon-fill');
+      document.getElementById('themeIcon').classList.toggle('bi-sun-fill');
+    });
+  </script>
+</body>
+</html>
